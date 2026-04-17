@@ -1,0 +1,13 @@
+{
+  "name": "stellar-smes-blockchain",
+  "version": "1.0.0",
+  "description": "Stellar SDK utilities and Soroban contract helpers",
+  "scripts": {
+    "fund-account": "node scripts/fundAccount.js",
+    "check-balance": "node scripts/checkBalance.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "stellar-sdk": "^11.2.2"
+  }
+}

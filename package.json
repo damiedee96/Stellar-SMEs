@@ -1,0 +1,13 @@
+{
+  "name": "stellar-smes",
+  "version": "1.0.0",
+  "description": "Financial technology platform for SMEs built on Stellar",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && npm install --prefix frontend && npm install --prefix backend && npm install --prefix blockchain",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "build:frontend": "npm run build --prefix frontend",
+    "build:backend": "npm run build --prefix backend"
+  }
+}

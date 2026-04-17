@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: stellar_user
+      POSTGRES_PASSWORD: stellar_pass
+      POSTGRES_DB: stellar_smes
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    ports:
+      - '5000:5000'
+    environment:
+      DATABASE_URL: postgres://stellar_user:stellar_pass@postgres:5432/stellar_smes
+      JWT_SECRET: changeme
+      STELLAR_NETWORK: testnet
+    depends_on:
+      - postgres
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  frontend:
+    build: ./frontend
+    ports:
+      - '3000:3000'
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+volumes:
+  pgdata:
